@@ -221,6 +221,86 @@
     .project-info .project-link:hover { gap: 0.7rem; color: var(--text); }
     .project-info .project-link svg { width: 16px; height: 16px; }
 
+    /* ── CAROUSEL ── */
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .carousel-track img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .carousel-track img.active {
+      opacity: 1;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.85);
+      border: none;
+      color: #111827;
+      font-size: 1.5rem;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      font-weight: 600;
+    }
+    .carousel:hover .carousel-btn {
+      opacity: 0.7;
+    }
+    .carousel-btn:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.95);
+    }
+    .carousel-prev {
+      left: 1rem;
+    }
+    .carousel-next {
+      right: 1rem;
+    }
+    .carousel-dots {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 10;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .dot.active {
+      background: rgba(255, 255, 255, 0.95);
+      width: 24px;
+      border-radius: 4px;
+    }
+
     /* ── ABOUT ── */
     .about-content {
       display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;
@@ -259,14 +339,6 @@
       border-top: 1px solid var(--border);
       color: var(--text-secondary);
       font-size: 0.8rem;
-    }
-
-    /* ── RESPONSIVENESS ── */
-    @media (max-width: 768px) {
-      nav .nav-links { gap: 1rem; }
-      .project-card { grid-template-columns: 1fr; }
-      .project-preview { min-height: 220px; }
-      .about-content { grid-template-columns: 1fr; gap: 2rem; }
     }
 
     /* ── HARDWARE GRID ── */
@@ -320,6 +392,14 @@
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVENESS ── */
+    @media (max-width: 768px) {
+      nav .nav-links { gap: 1rem; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-preview { min-height: 220px; }
+      .about-content { grid-template-columns: 1fr; gap: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -359,34 +439,18 @@
       <!-- Intel Feed -->
       <div class="project-card fade-in">
         <div class="project-preview" style="background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);">
-          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.1));">
-            <rect width="560" height="340" rx="12" fill="#ffffff"/>
-            <rect x="0" y="0" width="560" height="48" rx="12" fill="#fafafa"/>
-            <rect x="0" y="36" width="560" height="12" fill="#fafafa"/>
-            <text x="24" y="32" fill="#111" font-family="Inter,sans-serif" font-size="18" font-weight="700">Intel Feed</text>
-            <rect x="140" y="56" width="60" height="6" rx="3" fill="#6366f1" opacity="0.8"/>
-            <rect x="220" y="56" width="70" height="6" rx="3" fill="#d4d4d8"/>
-            <rect x="310" y="56" width="60" height="6" rx="3" fill="#d4d4d8"/>
-            <rect x="390" y="56" width="80" height="6" rx="3" fill="#d4d4d8"/>
-            <text x="24" y="92" fill="#333" font-family="Inter,sans-serif" font-size="11" font-weight="600">Your Topics</text>
-            <rect x="24" y="102" width="100" height="22" rx="11" fill="#f0f0ff" stroke="#c7d2fe" stroke-width="1"/>
-            <text x="42" y="117" fill="#6366f1" font-family="Inter,sans-serif" font-size="9">Autonomous robots</text>
-            <rect x="134" y="102" width="95" height="22" rx="11" fill="#f0f0ff" stroke="#c7d2fe" stroke-width="1"/>
-            <text x="148" y="117" fill="#6366f1" font-family="Inter,sans-serif" font-size="9">AI Manufacturing</text>
-            <rect x="239" y="102" width="72" height="22" rx="11" fill="#f0f0ff" stroke="#c7d2fe" stroke-width="1"/>
-            <text x="253" y="117" fill="#6366f1" font-family="Inter,sans-serif" font-size="9">Physical AI</text>
-            <rect x="24" y="148" width="512" height="1" fill="#e5e5e5"/>
-            <text x="24" y="176" fill="#333" font-family="Inter,sans-serif" font-size="11" font-weight="600">Today's Briefing</text>
-            <rect x="24" y="188" width="480" height="6" rx="3" fill="#e5e7eb"/>
-            <rect x="24" y="200" width="440" height="6" rx="3" fill="#e5e7eb"/>
-            <rect x="24" y="212" width="460" height="6" rx="3" fill="#e5e7eb"/>
-            <rect x="24" y="224" width="380" height="6" rx="3" fill="#e5e7eb"/>
-            <rect x="24" y="248" width="512" height="1" fill="#e5e5e5"/>
-            <rect x="24" y="268" width="200" height="8" rx="4" fill="#333"/>
-            <rect x="24" y="284" width="480" height="5" rx="2.5" fill="#e5e7eb"/>
-            <rect x="24" y="295" width="440" height="5" rx="2.5" fill="#e5e7eb"/>
-            <rect x="24" y="306" width="460" height="5" rx="2.5" fill="#e5e7eb"/>
-          </svg>
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="intel-feed.jpg" alt="Intel Feed main view with topics and briefing" class="active">
+              <img src="intel-articles.jpg" alt="Intel Feed articles list scrolled view">
+            </div>
+            <button class="carousel-btn carousel-prev">‹</button>
+            <button class="carousel-btn carousel-next">›</button>
+            <div class="carousel-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
         </div>
         <div class="project-info">
           <span class="project-tag">
@@ -429,67 +493,38 @@
           </a>
         </div>
         <div class="project-preview" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
-          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.25));">
-            <rect width="560" height="340" rx="12" fill="#0f1419"/>
-            <!-- Fire logo -->
-            <path d="M265 40 L280 15 L295 40 L288 35 L280 50 L272 35 Z" fill="#f97316" opacity="0.9"/>
-            <path d="M270 42 L280 22 L290 42 L285 38 L280 48 L275 38 Z" fill="#ef4444" opacity="0.8"/>
-            <!-- Title -->
-            <text x="218" y="80" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="22" font-weight="800" letter-spacing="2">WOD</text>
-            <text x="282" y="80" fill="#ef4444" font-family="Inter,sans-serif" font-size="22" font-weight="800" letter-spacing="2">BUILDER</text>
-            <!-- Subtitle -->
-            <text x="145" y="105" fill="#9ca3af" font-family="Inter,sans-serif" font-size="9">Build killer workouts. Track your progress. Dominate every session.</text>
-            <!-- CTA Button -->
-            <rect x="180" y="120" width="200" height="36" rx="8" fill="#f97316"/>
-            <text x="223" y="143" fill="white" font-family="Inter,sans-serif" font-size="12" font-weight="600">Go to Dashboard ></text>
-            <!-- Three feature cards -->
-            <rect x="24" y="180" width="164" height="140" rx="10" fill="#1e293b"/>
-            <circle cx="56" cy="210" r="14" fill="rgba(249,115,22,0.15)"/>
-            <text x="50" y="215" fill="#f97316" font-family="Inter,sans-serif" font-size="14" font-weight="700">+</text>
-            <text x="36" y="240" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">CUSTOM WOD</text>
-            <text x="36" y="252" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">BUILDER</text>
-            <rect x="36" y="264" width="130" height="4" rx="2" fill="#374151"/>
-            <rect x="36" y="274" width="110" height="4" rx="2" fill="#374151"/>
-            <rect x="36" y="284" width="120" height="4" rx="2" fill="#374151"/>
-            <rect x="198" y="180" width="164" height="140" rx="10" fill="#1e293b"/>
-            <circle cx="230" cy="210" r="14" fill="rgba(249,115,22,0.15)"/>
-            <text x="224" y="215" fill="#f97316" font-family="Inter,sans-serif" font-size="14" font-weight="700">☰</text>
-            <text x="210" y="240" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">PRE-BUILT</text>
-            <text x="210" y="252" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">TEMPLATES</text>
-            <rect x="210" y="264" width="130" height="4" rx="2" fill="#374151"/>
-            <rect x="210" y="274" width="110" height="4" rx="2" fill="#374151"/>
-            <rect x="210" y="284" width="120" height="4" rx="2" fill="#374151"/>
-            <rect x="372" y="180" width="164" height="140" rx="10" fill="#1e293b"/>
-            <circle cx="404" cy="210" r="14" fill="rgba(249,115,22,0.15)"/>
-            <text x="398" y="215" fill="#f97316" font-family="Inter,sans-serif" font-size="14" font-weight="700">↗</text>
-            <text x="384" y="240" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">TRACK</text>
-            <text x="384" y="252" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">PROGRESS</text>
-            <rect x="384" y="264" width="130" height="4" rx="2" fill="#374151"/>
-            <rect x="384" y="274" width="110" height="4" rx="2" fill="#374151"/>
-            <rect x="384" y="284" width="120" height="4" rx="2" fill="#374151"/>
-          </svg>
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="wod-dashboard.jpg" alt="WOD Builder welcome dashboard" class="active">
+              <img src="wod-builder.jpg" alt="WOD Builder workout builder form">
+              <img src="wod-templates.jpg" alt="WOD Builder templates page">
+            </div>
+            <button class="carousel-btn carousel-prev">‹</button>
+            <button class="carousel-btn carousel-next">›</button>
+            <div class="carousel-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Blind Tasting -->
       <div class="project-card fade-in">
         <div class="project-preview" style="background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);">
-          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.1));">
-            <rect width="560" height="340" rx="12" fill="#ffffff"/>
-            <text x="170" y="64" fill="#111" font-family="Inter,sans-serif" font-size="28" font-weight="800">Blind</text>
-            <text x="310" y="64" fill="#111" font-family="Inter,sans-serif" font-size="28" font-weight="800">Tasting</text>
-            <rect x="140" y="86" width="280" height="36" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
-            <text x="160" y="109" fill="#a1a1aa" font-family="Inter,sans-serif" font-size="11">ENTER CODE E.G. BREW42</text>
-            <rect x="140" y="132" width="280" height="36" rx="8" fill="#6366f1"/>
-            <text x="233" y="155" fill="white" font-family="Inter,sans-serif" font-size="12" font-weight="600">Join Tasting</text>
-            <text x="210" y="190" fill="#6366f1" font-family="Inter,sans-serif" font-size="10">Host a tasting? Create session →</text>
-            <rect x="140" y="210" width="280" height="1" fill="#e5e5e5"/>
-            <text x="175" y="244" fill="#333" font-family="Inter,sans-serif" font-size="12" font-weight="600">Admin? Rejoin your dashboard</text>
-            <rect x="140" y="258" width="280" height="32" rx="6" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
-            <text x="160" y="278" fill="#a1a1aa" font-family="Inter,sans-serif" font-size="10">SESSION CODE</text>
-            <rect x="140" y="298" width="280" height="32" rx="8" fill="#6366f1"/>
-            <text x="225" y="319" fill="white" font-family="Inter,sans-serif" font-size="11" font-weight="600">Go to Dashboard →</text>
-          </svg>
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="blind-home.jpg" alt="Blind Tasting homepage with join form" class="active">
+              <img src="blind-admin.jpg" alt="Blind Tasting admin dashboard">
+            </div>
+            <button class="carousel-btn carousel-prev">‹</button>
+            <button class="carousel-btn carousel-next">›</button>
+            <div class="carousel-dots">
+              <span class="dot active"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
         </div>
         <div class="project-info">
           <span class="project-tag">
@@ -545,30 +580,23 @@
 
       <div class="hardware-card fade-in">
         <div class="hardware-icon" style="background: rgba(34,197,94,0.1); color: #22c55e;">⬡</div>
-        <h4>R1 Lift Gate Trims &amp; Seals</h4>
-        <p>Interior and exterior trim pieces and weatherstrip seals for the Rivian R1 lift gate, balancing aesthetics, water management, and ease of assembly.</p>
+        <h4>Vehicle Architecture &amp; Systems Integration</h4>
+        <p>Full-body systems integration and subsystem architecture design for electric vehicles, including power management, thermal systems, and in-vehicle networks.</p>
         <span class="hw-company">Rivian</span>
       </div>
 
       <div class="hardware-card fade-in">
-        <div class="hardware-icon" style="background: rgba(34,197,94,0.1); color: #22c55e;">⬡</div>
-        <h4>Frunk Seals &amp; Claddings</h4>
-        <p>Front trunk (frunk) perimeter seals and interior cladding panels for Rivian vehicles, engineered for water ingress protection and premium fit-and-finish.</p>
-        <span class="hw-company">Rivian</span>
+        <div class="hardware-icon" style="background: rgba(59,130,246,0.1); color: #3b82f6;">⬢</div>
+        <h4>XTR-1 Hyperloop Pod Power Systems</h4>
+        <p>High-efficiency power distribution and energy management systems for hyperloop propulsion, including HVDC conversion and battery integration for accelerating multi-ton pods.</p>
+        <span class="hw-company">HyperXTR</span>
       </div>
 
       <div class="hardware-card fade-in">
-        <div class="hardware-icon" style="background: rgba(168,85,247,0.1); color: #a855f7;">⚡</div>
-        <h4>Hyperloop Power Electronics Unit</h4>
-        <p>High-voltage power electronics assembly for the Hyperloop pod, managing power conversion and distribution across propulsion and onboard systems.</p>
-        <span class="hw-company">Hyperloop</span>
-      </div>
-
-      <div class="hardware-card fade-in">
-        <div class="hardware-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b;">◎</div>
-        <h4>Percusense Sensor Assembly</h4>
-        <p>Precision sensor assembly for Percusense's diagnostic platform, integrating mechanical housing, sensor elements, and signal conditioning electronics.</p>
-        <span class="hw-company">Percusense</span>
+        <div class="hardware-icon" style="background: rgba(168,85,247,0.1); color: #a855f7;">⬣</div>
+        <h4>Pressure Vessel &amp; Switching Assemblies</h4>
+        <p>ASME-certified pressure vessel design and vacuum isolation switching systems for hyperloop testing tubes, rated for 150 PSI differential with dual redundancy.</p>
+        <span class="hw-company">HyperXTR</span>
       </div>
 
     </div>
@@ -619,6 +647,65 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.15 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Carousel functionality
+    class Carousel {
+      constructor(element) {
+        this.element = element;
+        this.track = element.querySelector('.carousel-track');
+        this.images = this.track.querySelectorAll('img');
+        this.dots = element.querySelectorAll('.dot');
+        this.prevBtn = element.querySelector('.carousel-prev');
+        this.nextBtn = element.querySelector('.carousel-next');
+        this.currentIndex = 0;
+
+        this.prevBtn.addEventListener('click', () => this.prev());
+        this.nextBtn.addEventListener('click', () => this.next());
+        this.dots.forEach((dot, idx) => {
+          dot.addEventListener('click', () => this.goToSlide(idx));
+        });
+
+        // Touch support
+        let touchStartX = 0;
+        this.track.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+        });
+        this.track.addEventListener('touchend', (e) => {
+          const touchEndX = e.changedTouches[0].clientX;
+          if (touchStartX - touchEndX > 50) this.next();
+          if (touchEndX - touchStartX > 50) this.prev();
+        });
+      }
+
+      updateCarousel() {
+        this.images.forEach((img, idx) => {
+          img.classList.toggle('active', idx === this.currentIndex);
+        });
+        this.dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === this.currentIndex);
+        });
+      }
+
+      next() {
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.updateCarousel();
+      }
+
+      prev() {
+        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        this.updateCarousel();
+      }
+
+      goToSlide(idx) {
+        this.currentIndex = idx;
+        this.updateCarousel();
+      }
+    }
+
+    // Initialize all carousels
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      new Carousel(carousel);
+    });
   </script>
 
 </body>
