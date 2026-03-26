@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nate Alvarez — Product Manager</title>
+  <meta name="description" content="Product portfolio of Nate Alvarez — PM building at the intersection of AI, fitness, and consumer experiences.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0b;
+      --surface: #141416;
+      --surface-hover: #1c1c20;
+      --border: #27272a;
+      --text: #fafafa;
+      --text-secondary: #a1a1aa;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --accent-glow: rgba(99, 102, 241, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem;
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 11, 0.8);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700;
+    }
+    nav .nav-links { display: flex; gap: 2rem; }
+    nav .nav-links a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(ellipse at 50% 50%, var(--accent-glow) 0%, transparent 60%);
+      animation: pulseGlow 8s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.05); }
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+    .hero .tag {
+      display: inline-block;
+      padding: 0.375rem 1rem;
+      background: var(--accent-glow);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 100px;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--accent-light);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 10px;
+      font-size: 0.95rem; font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--text-secondary); }
+
+    /* ── SECTION ── */
+    section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--accent-light);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── PROJECT CARDS ── */
+    .projects-grid { display: flex; flex-direction: column; gap: 3rem; }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .project-card:hover {
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 8px 40px rgba(99, 102, 241, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .project-preview {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .project-preview .mockup {
+      width: 88%;
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      transition: transform 0.35s ease;
+    }
+    .project-card:hover .mockup { transform: scale(1.02); }
+
+    .project-info {
+      padding: 2.5rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .project-info .project-tag {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent-light);
+      margin-bottom: 1rem;
+    }
+    .project-info h3 {
+      font-size: 1.5rem; font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .project-info .desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .project-info .pills {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .project-info .pill {
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--accent-light);
+      border: 1px solid rgba(99, 102, 241, 0.15);
+    }
+    .project-info .project-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--accent-light);
+      text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .project-info .project-link:hover { gap: 0.7rem; color: var(--text); }
+    .project-info .project-link svg { width: 16px; height: 16px; }
+
+    /* ── ABOUT ── */
+    .about-content {
+      display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;
+      align-items: start;
+    }
+    .about-text { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; }
+    .about-text p + p { margin-top: 1.25rem; }
+    .about-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+    .about-sidebar .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+    .stat-card .stat-label {
+      font-size: 0.7rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+    }
+    .stat-card .stat-value {
+      font-size: 1rem; font-weight: 600; color: var(--text);
+    }
+
+    /* ── CONTACT / FOOTER ── */
+    .contact {
+      text-align: center;
+      padding: 6rem 2rem 3rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact p { color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.05rem; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    /* ── RESPONSIVENESS ── */
+    @media (max-width: 768px) {
+      nav .nav-links { gap: 1rem; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-preview { min-height: 220px; }
+      .about-content { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ── SMOOTH FADE-IN ── */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Nate Alvarez</div>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="tag">Product Manager &bull; HBS MBA 2026</span>
+      <h1>Building products people actually want to use</h1>
+      <p>I ship user-centered products at the intersection of AI, consumer experiences, and real-world utility. Here's what I've been building.</p>
+      <div class="cta-group">
+        <a href="#projects" class="btn btn-primary">View My Work ↓</a>
+        <a href="mailto:nalvarez@mba2026.hbs.edu" class="btn btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Selected Projects</h2>
+    <p class="section-subtitle">End-to-end products I've designed, spec'd, and shipped — from zero to live users.</p>
+
+    <div class="projects-grid">
+
+      <!-- Intel Feed -->
+      <div class="project-card fade-in">
+        <div class="project-preview" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);">
+          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));">
+            <rect width="560" height="340" rx="12" fill="#ffffff"/>
+            <rect x="0" y="0" width="560" height="48" rx="12" fill="#fafafa"/>
+            <rect x="0" y="36" width="560" height="12" fill="#fafafa"/>
+            <text x="24" y="32" fill="#111" font-family="Inter,sans-serif" font-size="18" font-weight="700">Intel Feed</text>
+            <rect x="140" y="56" width="60" height="6" rx="3" fill="#6366f1" opacity="0.8"/>
+            <rect x="220" y="56" width="70" height="6" rx="3" fill="#d4d4d8"/>
+            <rect x="310" y="56" width="60" height="6" rx="3" fill="#d4d4d8"/>
+            <rect x="390" y="56" width="80" height="6" rx="3" fill="#d4d4d8"/>
+            <text x="24" y="92" fill="#333" font-family="Inter,sans-serif" font-size="11" font-weight="600">Your Topics</text>
+            <rect x="24" y="102" width="100" height="22" rx="11" fill="#f0f0ff" stroke="#c7d2fe" stroke-width="1"/>
+            <text x="42" y="117" fill="#6366f1" font-family="Inter,sans-serif" font-size="9">Autonomous robots</text>
+            <rect x="134" y="102" width="95" height="22" rx="11" fill="#f0f0ff" stroke="#c7d2fe" stroke-width="1"/>
+            <text x="148" y="117" fill="#6366f1" font-family="Inter,sans-serif" font-size="9">AI Manufacturing</text>
+            <rect x="239" y="102" width="72" height="22" rx="11" fill="#f0f0ff" stroke="#c7d2fe" stroke-width="1"/>
+            <text x="253" y="117" fill="#6366f1" font-family="Inter,sans-serif" font-size="9">Physical AI</text>
+            <rect x="24" y="148" width="512" height="1" fill="#e5e5e5"/>
+            <text x="24" y="176" fill="#333" font-family="Inter,sans-serif" font-size="11" font-weight="600">Today's Briefing</text>
+            <rect x="24" y="188" width="480" height="6" rx="3" fill="#e5e7eb"/>
+            <rect x="24" y="200" width="440" height="6" rx="3" fill="#e5e7eb"/>
+            <rect x="24" y="212" width="460" height="6" rx="3" fill="#e5e7eb"/>
+            <rect x="24" y="224" width="380" height="6" rx="3" fill="#e5e7eb"/>
+            <rect x="24" y="248" width="512" height="1" fill="#e5e5e5"/>
+            <rect x="24" y="268" width="200" height="8" rx="4" fill="#333"/>
+            <rect x="24" y="284" width="480" height="5" rx="2.5" fill="#e5e7eb"/>
+            <rect x="24" y="295" width="440" height="5" rx="2.5" fill="#e5e7eb"/>
+            <rect x="24" y="306" width="460" height="5" rx="2.5" fill="#e5e7eb"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">
+            <svg viewBox="0 0 16 16" fill="currentColor" width="12"><circle cx="8" cy="8" r="4"/></svg>
+            AI &bull; News Intelligence
+          </span>
+          <h3>Intel Feed</h3>
+          <p class="desc">An AI-powered intelligence briefing tool. Users subscribe to topics and receive daily synthesized briefings, podcast digests, and an action center — turning information overload into decision-ready insights.</p>
+          <div class="pills">
+            <span class="pill">AI Synthesis</span>
+            <span class="pill">Email Digests</span>
+            <span class="pill">Topic Subscriptions</span>
+            <span class="pill">Podcast Digest</span>
+          </div>
+          <a href="https://intel-feed-omega.vercel.app/" target="_blank" class="project-link">
+            View Live App
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11L11 5M11 5H6M11 5V10"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- WOD Builder -->
+      <div class="project-card fade-in">
+        <div class="project-info">
+          <span class="project-tag">
+            <svg viewBox="0 0 16 16" fill="currentColor" width="12"><circle cx="8" cy="8" r="4"/></svg>
+            Fitness &bull; Creator Tools
+          </span>
+          <h3>WOD Builder</h3>
+          <p class="desc">A workout-of-the-day builder for CrossFit athletes and coaches. Design custom workouts with exercises, sets, reps, and rest periods, or pull from classic templates like Fran, Cindy, and Tabata. Track every session and watch your progress over time.</p>
+          <div class="pills">
+            <span class="pill">Custom Workouts</span>
+            <span class="pill">Pre-Built Templates</span>
+            <span class="pill">Progress Tracking</span>
+            <span class="pill">Session Logging</span>
+          </div>
+          <a href="https://wod-creator-hub.lovable.app/" target="_blank" class="project-link">
+            View Live App
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11L11 5M11 5H6M11 5V10"/></svg>
+          </a>
+        </div>
+        <div class="project-preview" style="background: linear-gradient(135deg, #1a0a0a 0%, #0f0a0a 100%);">
+          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));">
+            <rect width="560" height="340" rx="12" fill="#1a1a2e"/>
+            <rect x="0" y="0" width="560" height="48" rx="12" fill="#141428"/>
+            <rect x="0" y="36" width="560" height="12" fill="#141428"/>
+            <text x="24" y="32" fill="#fafafa" font-family="Inter,sans-serif" font-size="18" font-weight="700">WOD Builder</text>
+            <text x="24" y="80" fill="#a1a1aa" font-family="Inter,sans-serif" font-size="11">Build killer workouts. Track your progress.</text>
+            <rect x="24" y="100" width="160" height="100" rx="8" fill="#252545"/>
+            <text x="40" y="124" fill="#818cf8" font-family="Inter,sans-serif" font-size="10" font-weight="600">Custom WOD Builder</text>
+            <rect x="40" y="134" width="120" height="4" rx="2" fill="#3f3f66"/>
+            <rect x="40" y="144" width="100" height="4" rx="2" fill="#3f3f66"/>
+            <rect x="40" y="154" width="110" height="4" rx="2" fill="#3f3f66"/>
+            <rect x="200" y="100" width="160" height="100" rx="8" fill="#252545"/>
+            <text x="216" y="124" fill="#818cf8" font-family="Inter,sans-serif" font-size="10" font-weight="600">Pre-Built Templates</text>
+            <rect x="216" y="134" width="120" height="4" rx="2" fill="#3f3f66"/>
+            <rect x="216" y="144" width="100" height="4" rx="2" fill="#3f3f66"/>
+            <rect x="216" y="154" width="110" height="4" rx="2" fill="#3f3f66"/>
+            <rect x="376" y="100" width="160" height="100" rx="8" fill="#252545"/>
+            <text x="392" y="124" fill="#818cf8" font-family="Inter,sans-serif" font-size="10" font-weight="600">Track Progress</text>
+            <rect x="392" y="134" width="120" height="4" rx="2" fill="#3f3f66"/>
+            <rect x="392" y="144" width="100" height="4" rx="2" fill="#3f3f66"/>
+            <rect x="392" y="154" width="110" height="4" rx="2" fill="#3f3f66"/>
+            <rect x="24" y="220" width="512" height="36" rx="8" fill="#6366f1"/>
+            <text x="230" y="243" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Go to Dashboard</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Blind Tasting -->
+      <div class="project-card fade-in">
+        <div class="project-preview" style="background: linear-gradient(135deg, #0f0a1e 0%, #1a102e 100%);">
+          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));">
+            <rect width="560" height="340" rx="12" fill="#ffffff"/>
+            <text x="170" y="64" fill="#111" font-family="Inter,sans-serif" font-size="28" font-weight="800">Blind</text>
+            <text x="310" y="64" fill="#111" font-family="Inter,sans-serif" font-size="28" font-weight="800">Tasting</text>
+            <rect x="140" y="86" width="280" height="36" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+            <text x="160" y="109" fill="#a1a1aa" font-family="Inter,sans-serif" font-size="11">ENTER CODE E.G. BREW42</text>
+            <rect x="140" y="132" width="280" height="36" rx="8" fill="#6366f1"/>
+            <text x="233" y="155" fill="white" font-family="Inter,sans-serif" font-size="12" font-weight="600">Join Tasting</text>
+            <text x="210" y="190" fill="#6366f1" font-family="Inter,sans-serif" font-size="10">Host a tasting? Create session →</text>
+            <rect x="140" y="210" width="280" height="1" fill="#e5e5e5"/>
+            <text x="175" y="244" fill="#333" font-family="Inter,sans-serif" font-size="12" font-weight="600">Admin? Rejoin your dashboard</text>
+            <rect x="140" y="258" width="280" height="32" rx="6" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+            <text x="160" y="278" fill="#a1a1aa" font-family="Inter,sans-serif" font-size="10">SESSION CODE</text>
+            <rect x="140" y="298" width="280" height="32" rx="8" fill="#6366f1"/>
+            <text x="225" y="319" fill="white" font-family="Inter,sans-serif" font-size="11" font-weight="600">Go to Dashboard →</text>
+          </svg>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">
+            <svg viewBox="0 0 16 16" fill="currentColor" width="12"><circle cx="8" cy="8" r="4"/></svg>
+            Social &bull; Events
+          </span>
+          <h3>Blind Tasting</h3>
+          <p class="desc">A real-time blind tasting platform for social gatherings. Hosts create tasting sessions, participants join with a code, rate samples without bias, and then reveal results together. Built for beer, steak, wine — anything tasteable.</p>
+          <div class="pills">
+            <span class="pill">Real-Time Sessions</span>
+            <span class="pill">Code-Based Join</span>
+            <span class="pill">Blind Rating</span>
+            <span class="pill">Admin Dashboard</span>
+          </div>
+          <a href="https://blind-beer-tasting.vercel.app/" target="_blank" class="project-link">
+            View Live App
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11L11 5M11 5H6M11 5V10"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2 class="section-title">A bit about me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>I'm Nate Alvarez, an MBA candidate at Harvard Business School (Class of 2026) with a passion for building products that solve real problems. I operate at the intersection of technology strategy and hands-on product development — I don't just write PRDs, I ship code.</p>
+        <p>These portfolio projects represent my approach to product management: identify a genuine user need, prototype rapidly, and iterate with real feedback. Whether it's making intelligence briefings actionable, helping athletes build better workouts, or removing bias from social tasting events — I care about building things that people reach for every day.</p>
+        <p>I'm currently looking for product management roles where I can bring this builder mentality to a team solving meaningful problems at scale.</p>
+      </div>
+      <div class="about-sidebar">
+        <div class="stat-card">
+          <div class="stat-label">Education</div>
+          <div class="stat-value">Harvard Business School</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Focus</div>
+          <div class="stat-value">AI, Consumer, Developer Tools</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Approach</div>
+          <div class="stat-value">Ship fast, learn faster</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Let's build something</h2>
+    <p>I'm actively exploring product management opportunities. If you're looking for a PM who ships, I'd love to chat.</p>
+    <a href="mailto:nalvarez@mba2026.hbs.edu" class="btn btn-primary">nalvarez@mba2026.hbs.edu</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Nate Alvarez. Built with care.</p>
+  </footer>
+
+  <script>
+    // Scroll-triggered fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
