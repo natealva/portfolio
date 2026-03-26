@@ -12,15 +12,15 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0a0a0b;
-      --surface: #141416;
-      --surface-hover: #1c1c20;
-      --border: #27272a;
-      --text: #fafafa;
-      --text-secondary: #a1a1aa;
-      --accent: #6366f1;
-      --accent-light: #818cf8;
-      --accent-glow: rgba(99, 102, 241, 0.15);
+      --bg: #ffffff;
+      --surface: #f8f9fa;
+      --surface-hover: #f0f1f3;
+      --border: #e2e5e9;
+      --text: #111827;
+      --text-secondary: #6b7280;
+      --accent: #4f46e5;
+      --accent-light: #6366f1;
+      --accent-glow: rgba(79, 70, 229, 0.08);
     }
 
     html { scroll-behavior: smooth; }
@@ -33,12 +33,12 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
+    /* ──── NAV ──── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 1rem 2rem;
       backdrop-filter: blur(20px);
-      background: rgba(10, 10, 11, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       border-bottom: 1px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
     }
@@ -54,7 +54,7 @@
     }
     nav .nav-links a:hover { color: var(--text); }
 
-    /* ── HERO ── */
+    /* ──── HERO ──── */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -92,9 +92,7 @@
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text);
     }
     .hero p {
       font-size: 1.2rem;
@@ -126,7 +124,7 @@
     }
     .btn-ghost:hover { color: var(--text); border-color: var(--text-secondary); }
 
-    /* ── SECTION ── */
+    /* ──── SECTION ──── */
     section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
     .section-label {
       font-size: 0.75rem; font-weight: 600;
@@ -147,7 +145,7 @@
       margin-bottom: 3rem;
     }
 
-    /* ── PROJECT CARDS ── */
+    /* ──── PROJECT CARDS ──── */
     .projects-grid { display: flex; flex-direction: column; gap: 3rem; }
 
     .project-card {
@@ -161,7 +159,7 @@
     }
     .project-card:hover {
       border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 8px 40px rgba(99, 102, 241, 0.08);
+      box-shadow: 0 8px 40px rgba(99, 102, 241, 0.12);
       transform: translateY(-2px);
     }
 
@@ -175,7 +173,7 @@
     .project-preview .mockup {
       width: 88%;
       border-radius: 8px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
       transition: transform 0.35s ease;
     }
     .project-card:hover .mockup { transform: scale(1.02); }
@@ -223,7 +221,7 @@
     .project-info .project-link:hover { gap: 0.7rem; color: var(--text); }
     .project-info .project-link svg { width: 16px; height: 16px; }
 
-    /* ── ABOUT ── */
+    /* ──── ABOUT ──── */
     .about-content {
       display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;
       align-items: start;
@@ -246,7 +244,7 @@
       font-size: 1rem; font-weight: 600; color: var(--text);
     }
 
-    /* ── CONTACT / FOOTER ── */
+    /* ──── CONTACT / FOOTER ──── */
     .contact {
       text-align: center;
       padding: 6rem 2rem 3rem;
@@ -263,7 +261,7 @@
       font-size: 0.8rem;
     }
 
-    /* ── RESPONSIVENESS ── */
+    /* ──── RESPONSIVENESS ──── */
     @media (max-width: 768px) {
       nav .nav-links { gap: 1rem; }
       .project-card { grid-template-columns: 1fr; }
@@ -271,7 +269,7 @@
       .about-content { grid-template-columns: 1fr; gap: 2rem; }
     }
 
-    /* ── SMOOTH FADE-IN ── */
+    /* ──── SMOOTH FADE-IN ──── */
     .fade-in {
       opacity: 0; transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
@@ -294,7 +292,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <span class="tag">Product Manager &bull; HBS MBA 2026</span>
+      <span class="tag">Product Manager • HBS MBA 2026</span>
       <h1>Building products people actually want to use</h1>
       <p>I ship user-centered products at the intersection of AI, consumer experiences, and real-world utility. Here's what I've been building.</p>
       <div class="cta-group">
@@ -314,8 +312,8 @@
 
       <!-- Intel Feed -->
       <div class="project-card fade-in">
-        <div class="project-preview" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);">
-          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));">
+        <div class="project-preview" style="background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);">
+          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.1));">
             <rect width="560" height="340" rx="12" fill="#ffffff"/>
             <rect x="0" y="0" width="560" height="48" rx="12" fill="#fafafa"/>
             <rect x="0" y="36" width="560" height="12" fill="#fafafa"/>
@@ -347,7 +345,7 @@
         <div class="project-info">
           <span class="project-tag">
             <svg viewBox="0 0 16 16" fill="currentColor" width="12"><circle cx="8" cy="8" r="4"/></svg>
-            AI &bull; News Intelligence
+            AI • News Intelligence
           </span>
           <h3>Intel Feed</h3>
           <p class="desc">An AI-powered intelligence briefing tool. Users subscribe to topics and receive daily synthesized briefings, podcast digests, and an action center — turning information overload into decision-ready insights.</p>
@@ -369,7 +367,7 @@
         <div class="project-info">
           <span class="project-tag">
             <svg viewBox="0 0 16 16" fill="currentColor" width="12"><circle cx="8" cy="8" r="4"/></svg>
-            Fitness &bull; Creator Tools
+            Fitness • Creator Tools
           </span>
           <h3>WOD Builder</h3>
           <p class="desc">A workout-of-the-day builder for CrossFit athletes and coaches. Design custom workouts with exercises, sets, reps, and rest periods, or pull from classic templates like Fran, Cindy, and Tabata. Track every session and watch your progress over time.</p>
@@ -384,29 +382,29 @@
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11L11 5M11 5H6M11 5V10"/></svg>
           </a>
         </div>
-        <div class="project-preview" style="background: linear-gradient(135deg, #1a0a0a 0%, #0f0a0a 100%);">
-          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));">
-            <rect width="560" height="340" rx="12" fill="#1a1a2e"/>
-            <rect x="0" y="0" width="560" height="48" rx="12" fill="#141428"/>
-            <rect x="0" y="36" width="560" height="12" fill="#141428"/>
-            <text x="24" y="32" fill="#fafafa" font-family="Inter,sans-serif" font-size="18" font-weight="700">WOD Builder</text>
-            <text x="24" y="80" fill="#a1a1aa" font-family="Inter,sans-serif" font-size="11">Build killer workouts. Track your progress.</text>
-            <rect x="24" y="100" width="160" height="100" rx="8" fill="#252545"/>
-            <text x="40" y="124" fill="#818cf8" font-family="Inter,sans-serif" font-size="10" font-weight="600">Custom WOD Builder</text>
-            <rect x="40" y="134" width="120" height="4" rx="2" fill="#3f3f66"/>
-            <rect x="40" y="144" width="100" height="4" rx="2" fill="#3f3f66"/>
-            <rect x="40" y="154" width="110" height="4" rx="2" fill="#3f3f66"/>
-            <rect x="200" y="100" width="160" height="100" rx="8" fill="#252545"/>
-            <text x="216" y="124" fill="#818cf8" font-family="Inter,sans-serif" font-size="10" font-weight="600">Pre-Built Templates</text>
-            <rect x="216" y="134" width="120" height="4" rx="2" fill="#3f3f66"/>
-            <rect x="216" y="144" width="100" height="4" rx="2" fill="#3f3f66"/>
-            <rect x="216" y="154" width="110" height="4" rx="2" fill="#3f3f66"/>
-            <rect x="376" y="100" width="160" height="100" rx="8" fill="#252545"/>
-            <text x="392" y="124" fill="#818cf8" font-family="Inter,sans-serif" font-size="10" font-weight="600">Track Progress</text>
-            <rect x="392" y="134" width="120" height="4" rx="2" fill="#3f3f66"/>
-            <rect x="392" y="144" width="100" height="4" rx="2" fill="#3f3f66"/>
-            <rect x="392" y="154" width="110" height="4" rx="2" fill="#3f3f66"/>
-            <rect x="24" y="220" width="512" height="36" rx="8" fill="#6366f1"/>
+        <div class="project-preview" style="background: linear-gradient(135deg, #fef2f2 0%, #fce7f3 100%);">
+          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.1));">
+            <rect width="560" height="340" rx="12" fill="#ffffff"/>
+            <rect x="0" y="0" width="560" height="48" rx="12" fill="#f9fafb"/>
+            <rect x="0" y="36" width="560" height="12" fill="#f9fafb"/>
+            <text x="24" y="32" fill="#111827" font-family="Inter,sans-serif" font-size="18" font-weight="700">WOD Builder</text>
+            <text x="24" y="80" fill="#6b7280" font-family="Inter,sans-serif" font-size="11">Build killer workouts. Track your progress.</text>
+            <rect x="24" y="100" width="160" height="100" rx="8" fill="#f3f4f6"/>
+            <text x="40" y="124" fill="#4f46e5" font-family="Inter,sans-serif" font-size="10" font-weight="600">Custom WOD Builder</text>
+            <rect x="40" y="134" width="120" height="4" rx="2" fill="#d1d5db"/>
+            <rect x="40" y="144" width="100" height="4" rx="2" fill="#d1d5db"/>
+            <rect x="40" y="154" width="110" height="4" rx="2" fill="#d1d5db"/>
+            <rect x="200" y="100" width="160" height="100" rx="8" fill="#f3f4f6"/>
+            <text x="216" y="124" fill="#4f46e5" font-family="Inter,sans-serif" font-size="10" font-weight="600">Pre-Built Templates</text>
+            <rect x="216" y="134" width="120" height="4" rx="2" fill="#d1d5db"/>
+            <rect x="216" y="144" width="100" height="4" rx="2" fill="#d1d5db"/>
+            <rect x="216" y="154" width="110" height="4" rx="2" fill="#d1d5db"/>
+            <rect x="376" y="100" width="160" height="100" rx="8" fill="#f3f4f6"/>
+            <text x="392" y="124" fill="#4f46e5" font-family="Inter,sans-serif" font-size="10" font-weight="600">Track Progress</text>
+            <rect x="392" y="134" width="120" height="4" rx="2" fill="#d1d5db"/>
+            <rect x="392" y="144" width="100" height="4" rx="2" fill="#d1d5db"/>
+            <rect x="392" y="154" width="110" height="4" rx="2" fill="#d1d5db"/>
+            <rect x="24" y="220" width="512" height="36" rx="8" fill="#4f46e5"/>
             <text x="230" y="243" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Go to Dashboard</text>
           </svg>
         </div>
@@ -414,8 +412,8 @@
 
       <!-- Blind Tasting -->
       <div class="project-card fade-in">
-        <div class="project-preview" style="background: linear-gradient(135deg, #0f0a1e 0%, #1a102e 100%);">
-          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.5));">
+        <div class="project-preview" style="background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);">
+          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.1));">
             <rect width="560" height="340" rx="12" fill="#ffffff"/>
             <text x="170" y="64" fill="#111" font-family="Inter,sans-serif" font-size="28" font-weight="800">Blind</text>
             <text x="310" y="64" fill="#111" font-family="Inter,sans-serif" font-size="28" font-weight="800">Tasting</text>
@@ -435,7 +433,7 @@
         <div class="project-info">
           <span class="project-tag">
             <svg viewBox="0 0 16 16" fill="currentColor" width="12"><circle cx="8" cy="8" r="4"/></svg>
-            Social &bull; Events
+            Social • Events
           </span>
           <h3>Blind Tasting</h3>
           <p class="desc">A real-time blind tasting platform for social gatherings. Hosts create tasting sessions, participants join with a code, rate samples without bias, and then reveal results together. Built for beer, steak, wine — anything tasteable.</p>
