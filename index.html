@@ -33,7 +33,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ──── NAV ──── */
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 1rem 2rem;
@@ -54,7 +54,7 @@
     }
     nav .nav-links a:hover { color: var(--text); }
 
-    /* ──── HERO ──── */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -124,7 +124,7 @@
     }
     .btn-ghost:hover { color: var(--text); border-color: var(--text-secondary); }
 
-    /* ──── SECTION ──── */
+    /* ── SECTION ── */
     section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
     .section-label {
       font-size: 0.75rem; font-weight: 600;
@@ -145,7 +145,7 @@
       margin-bottom: 3rem;
     }
 
-    /* ──── PROJECT CARDS ──── */
+    /* ── PROJECT CARDS ── */
     .projects-grid { display: flex; flex-direction: column; gap: 3rem; }
 
     .project-card {
@@ -221,7 +221,7 @@
     .project-info .project-link:hover { gap: 0.7rem; color: var(--text); }
     .project-info .project-link svg { width: 16px; height: 16px; }
 
-    /* ──── ABOUT ──── */
+    /* ── ABOUT ── */
     .about-content {
       display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;
       align-items: start;
@@ -244,7 +244,7 @@
       font-size: 1rem; font-weight: 600; color: var(--text);
     }
 
-    /* ──── CONTACT / FOOTER ──── */
+    /* ── CONTACT / FOOTER ── */
     .contact {
       text-align: center;
       padding: 6rem 2rem 3rem;
@@ -261,7 +261,7 @@
       font-size: 0.8rem;
     }
 
-    /* ──── RESPONSIVENESS ──── */
+    /* ── RESPONSIVENESS ── */
     @media (max-width: 768px) {
       nav .nav-links { gap: 1rem; }
       .project-card { grid-template-columns: 1fr; }
@@ -269,7 +269,52 @@
       .about-content { grid-template-columns: 1fr; gap: 2rem; }
     }
 
-    /* ──── SMOOTH FADE-IN ──── */
+    /* ── HARDWARE GRID ── */
+    .hardware-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .hardware-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+    }
+    .hardware-card:hover {
+      border-color: rgba(99, 102, 241, 0.3);
+      box-shadow: 0 6px 28px rgba(99, 102, 241, 0.1);
+      transform: translateY(-2px);
+    }
+    .hardware-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 1.25rem;
+    }
+    .hardware-card h4 {
+      font-size: 1rem; font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .hardware-card p {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.65;
+    }
+    .hardware-card .hw-company {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-light);
+    }
+
+    /* ── SMOOTH FADE-IN ── */
     .fade-in {
       opacity: 0; transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
@@ -284,6 +329,7 @@
     <div class="logo">Nate Alvarez</div>
     <div class="nav-links">
       <a href="#projects">Projects</a>
+      <a href="#hardware">Hardware</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
@@ -292,7 +338,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <span class="tag">Product Manager • HBS MBA 2026</span>
+      <span class="tag">Product Manager &bull; HBS MBA 2026</span>
       <h1>Building products people actually want to use</h1>
       <p>I ship user-centered products at the intersection of AI, consumer experiences, and real-world utility. Here's what I've been building.</p>
       <div class="cta-group">
@@ -345,7 +391,7 @@
         <div class="project-info">
           <span class="project-tag">
             <svg viewBox="0 0 16 16" fill="currentColor" width="12"><circle cx="8" cy="8" r="4"/></svg>
-            AI • News Intelligence
+            AI &bull; News Intelligence
           </span>
           <h3>Intel Feed</h3>
           <p class="desc">An AI-powered intelligence briefing tool. Users subscribe to topics and receive daily synthesized briefings, podcast digests, and an action center — turning information overload into decision-ready insights.</p>
@@ -367,7 +413,7 @@
         <div class="project-info">
           <span class="project-tag">
             <svg viewBox="0 0 16 16" fill="currentColor" width="12"><circle cx="8" cy="8" r="4"/></svg>
-            Fitness • Creator Tools
+            Fitness &bull; Creator Tools
           </span>
           <h3>WOD Builder</h3>
           <p class="desc">A workout-of-the-day builder for CrossFit athletes and coaches. Design custom workouts with exercises, sets, reps, and rest periods, or pull from classic templates like Fran, Cindy, and Tabata. Track every session and watch your progress over time.</p>
@@ -382,30 +428,45 @@
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11L11 5M11 5H6M11 5V10"/></svg>
           </a>
         </div>
-        <div class="project-preview" style="background: linear-gradient(135deg, #fef2f2 0%, #fce7f3 100%);">
-          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.1));">
-            <rect width="560" height="340" rx="12" fill="#ffffff"/>
-            <rect x="0" y="0" width="560" height="48" rx="12" fill="#f9fafb"/>
-            <rect x="0" y="36" width="560" height="12" fill="#f9fafb"/>
-            <text x="24" y="32" fill="#111827" font-family="Inter,sans-serif" font-size="18" font-weight="700">WOD Builder</text>
-            <text x="24" y="80" fill="#6b7280" font-family="Inter,sans-serif" font-size="11">Build killer workouts. Track your progress.</text>
-            <rect x="24" y="100" width="160" height="100" rx="8" fill="#f3f4f6"/>
-            <text x="40" y="124" fill="#4f46e5" font-family="Inter,sans-serif" font-size="10" font-weight="600">Custom WOD Builder</text>
-            <rect x="40" y="134" width="120" height="4" rx="2" fill="#d1d5db"/>
-            <rect x="40" y="144" width="100" height="4" rx="2" fill="#d1d5db"/>
-            <rect x="40" y="154" width="110" height="4" rx="2" fill="#d1d5db"/>
-            <rect x="200" y="100" width="160" height="100" rx="8" fill="#f3f4f6"/>
-            <text x="216" y="124" fill="#4f46e5" font-family="Inter,sans-serif" font-size="10" font-weight="600">Pre-Built Templates</text>
-            <rect x="216" y="134" width="120" height="4" rx="2" fill="#d1d5db"/>
-            <rect x="216" y="144" width="100" height="4" rx="2" fill="#d1d5db"/>
-            <rect x="216" y="154" width="110" height="4" rx="2" fill="#d1d5db"/>
-            <rect x="376" y="100" width="160" height="100" rx="8" fill="#f3f4f6"/>
-            <text x="392" y="124" fill="#4f46e5" font-family="Inter,sans-serif" font-size="10" font-weight="600">Track Progress</text>
-            <rect x="392" y="134" width="120" height="4" rx="2" fill="#d1d5db"/>
-            <rect x="392" y="144" width="100" height="4" rx="2" fill="#d1d5db"/>
-            <rect x="392" y="154" width="110" height="4" rx="2" fill="#d1d5db"/>
-            <rect x="24" y="220" width="512" height="36" rx="8" fill="#4f46e5"/>
-            <text x="230" y="243" fill="white" font-family="Inter,sans-serif" font-size="13" font-weight="600">Go to Dashboard</text>
+        <div class="project-preview" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+          <svg class="mockup" viewBox="0 0 560 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:85%; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.25));">
+            <rect width="560" height="340" rx="12" fill="#0f1419"/>
+            <!-- Fire logo -->
+            <path d="M265 40 L280 15 L295 40 L288 35 L280 50 L272 35 Z" fill="#f97316" opacity="0.9"/>
+            <path d="M270 42 L280 22 L290 42 L285 38 L280 48 L275 38 Z" fill="#ef4444" opacity="0.8"/>
+            <!-- Title -->
+            <text x="218" y="80" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="22" font-weight="800" letter-spacing="2">WOD</text>
+            <text x="282" y="80" fill="#ef4444" font-family="Inter,sans-serif" font-size="22" font-weight="800" letter-spacing="2">BUILDER</text>
+            <!-- Subtitle -->
+            <text x="145" y="105" fill="#9ca3af" font-family="Inter,sans-serif" font-size="9">Build killer workouts. Track your progress. Dominate every session.</text>
+            <!-- CTA Button -->
+            <rect x="180" y="120" width="200" height="36" rx="8" fill="#f97316"/>
+            <text x="223" y="143" fill="white" font-family="Inter,sans-serif" font-size="12" font-weight="600">Go to Dashboard ></text>
+            <!-- Three feature cards -->
+            <rect x="24" y="180" width="164" height="140" rx="10" fill="#1e293b"/>
+            <circle cx="56" cy="210" r="14" fill="rgba(249,115,22,0.15)"/>
+            <text x="50" y="215" fill="#f97316" font-family="Inter,sans-serif" font-size="14" font-weight="700">+</text>
+            <text x="36" y="240" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">CUSTOM WOD</text>
+            <text x="36" y="252" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">BUILDER</text>
+            <rect x="36" y="264" width="130" height="4" rx="2" fill="#374151"/>
+            <rect x="36" y="274" width="110" height="4" rx="2" fill="#374151"/>
+            <rect x="36" y="284" width="120" height="4" rx="2" fill="#374151"/>
+            <rect x="198" y="180" width="164" height="140" rx="10" fill="#1e293b"/>
+            <circle cx="230" cy="210" r="14" fill="rgba(249,115,22,0.15)"/>
+            <text x="224" y="215" fill="#f97316" font-family="Inter,sans-serif" font-size="14" font-weight="700">☰</text>
+            <text x="210" y="240" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">PRE-BUILT</text>
+            <text x="210" y="252" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">TEMPLATES</text>
+            <rect x="210" y="264" width="130" height="4" rx="2" fill="#374151"/>
+            <rect x="210" y="274" width="110" height="4" rx="2" fill="#374151"/>
+            <rect x="210" y="284" width="120" height="4" rx="2" fill="#374151"/>
+            <rect x="372" y="180" width="164" height="140" rx="10" fill="#1e293b"/>
+            <circle cx="404" cy="210" r="14" fill="rgba(249,115,22,0.15)"/>
+            <text x="398" y="215" fill="#f97316" font-family="Inter,sans-serif" font-size="14" font-weight="700">↗</text>
+            <text x="384" y="240" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">TRACK</text>
+            <text x="384" y="252" fill="#e5e7eb" font-family="Inter,sans-serif" font-size="9" font-weight="600">PROGRESS</text>
+            <rect x="384" y="264" width="130" height="4" rx="2" fill="#374151"/>
+            <rect x="384" y="274" width="110" height="4" rx="2" fill="#374151"/>
+            <rect x="384" y="284" width="120" height="4" rx="2" fill="#374151"/>
           </svg>
         </div>
       </div>
@@ -433,7 +494,7 @@
         <div class="project-info">
           <span class="project-tag">
             <svg viewBox="0 0 16 16" fill="currentColor" width="12"><circle cx="8" cy="8" r="4"/></svg>
-            Social • Events
+            Social &bull; Events
           </span>
           <h3>Blind Tasting</h3>
           <p class="desc">A real-time blind tasting platform for social gatherings. Hosts create tasting sessions, participants join with a code, rate samples without bias, and then reveal results together. Built for beer, steak, wine — anything tasteable.</p>
@@ -448,6 +509,66 @@
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11L11 5M11 5H6M11 5V10"/></svg>
           </a>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHYSICAL PRODUCTS -->
+  <section id="hardware">
+    <p class="section-label">Hardware</p>
+    <h2 class="section-title">Physical Products</h2>
+    <p class="section-subtitle">Mechanical and electromechanical assemblies I've engineered — from automotive trim to hyperloop power systems.</p>
+
+    <div class="hardware-grid">
+
+      <div class="hardware-card fade-in">
+        <div class="hardware-icon" style="background: rgba(34,197,94,0.1); color: #22c55e;">⬡</div>
+        <h4>R1 Front Door Fixed Glass Assembly</h4>
+        <p>Fixed glass panel assembly for the Rivian R1 front door, including sealing systems, retention hardware, and alignment components for weather-tight integration.</p>
+        <span class="hw-company">Rivian</span>
+      </div>
+
+      <div class="hardware-card fade-in">
+        <div class="hardware-icon" style="background: rgba(34,197,94,0.1); color: #22c55e;">⬡</div>
+        <h4>R1S Rear Door Fixed Glass &amp; Below Belt Brackets</h4>
+        <p>Rear door fixed glass assembly and below-belt structural brackets for the Rivian R1S, ensuring rigidity, seal integrity, and crash-safe mounting.</p>
+        <span class="hw-company">Rivian</span>
+      </div>
+
+      <div class="hardware-card fade-in">
+        <div class="hardware-icon" style="background: rgba(34,197,94,0.1); color: #22c55e;">⬡</div>
+        <h4>R2 B Pillar Appliques &amp; Window Claddings</h4>
+        <p>Exterior B pillar appliques and window cladding trim for the Rivian R2 platform, designed for Class-A surface finish and high-speed wind noise reduction.</p>
+        <span class="hw-company">Rivian</span>
+      </div>
+
+      <div class="hardware-card fade-in">
+        <div class="hardware-icon" style="background: rgba(34,197,94,0.1); color: #22c55e;">⬡</div>
+        <h4>R1 Lift Gate Trims &amp; Seals</h4>
+        <p>Interior and exterior trim pieces and weatherstrip seals for the Rivian R1 lift gate, balancing aesthetics, water management, and ease of assembly.</p>
+        <span class="hw-company">Rivian</span>
+      </div>
+
+      <div class="hardware-card fade-in">
+        <div class="hardware-icon" style="background: rgba(34,197,94,0.1); color: #22c55e;">⬡</div>
+        <h4>Frunk Seals &amp; Claddings</h4>
+        <p>Front trunk (frunk) perimeter seals and interior cladding panels for Rivian vehicles, engineered for water ingress protection and premium fit-and-finish.</p>
+        <span class="hw-company">Rivian</span>
+      </div>
+
+      <div class="hardware-card fade-in">
+        <div class="hardware-icon" style="background: rgba(168,85,247,0.1); color: #a855f7;">⚡</div>
+        <h4>Hyperloop Power Electronics Unit</h4>
+        <p>High-voltage power electronics assembly for the Hyperloop pod, managing power conversion and distribution across propulsion and onboard systems.</p>
+        <span class="hw-company">Hyperloop</span>
+      </div>
+
+      <div class="hardware-card fade-in">
+        <div class="hardware-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b;">◎</div>
+        <h4>Percusense Sensor Assembly</h4>
+        <p>Precision sensor assembly for Percusense's diagnostic platform, integrating mechanical housing, sensor elements, and signal conditioning electronics.</p>
+        <span class="hw-company">Percusense</span>
       </div>
 
     </div>
