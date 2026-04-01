@@ -5,170 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nate Alvarez | Product Builder</title>
     <meta name="description" content="Nate Alvarez | Product Manager, HBS MBA 2026. Building products at the intersection of AI, consumer experiences, and real-world utility.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #fafafa;
-            --bg-card: #ffffff;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
-            --accent: #6366f1;
-            --accent-hover: #4f46e5;
-            --accent-light: #eef2ff;
-            --accent-glow: rgba(99,102,241,0.12);
-            --border: #e2e8f0;
-            --border-hover: #cbd5e0;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text-primary);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* ===== NAV ===== */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: rgba(250,250,250,0.85);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            transition: var(--transition);
-        }
-        nav.scrolled { box-shadow: var(--shadow-sm); }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-            display: flex; justify-content: space-between; align-items: center; height: 64px;
-        }
-        .nav-logo {
-            font-weight: 700; font-size: 1.1rem; color: var(--text-primary);
-            text-decoration: none; letter-spacing: -0.02em;
-        }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a {
-            font-size: 0.875rem; font-weight: 500; color: var(--text-secondary);
-            text-decoration: none; transition: var(--transition); position: relative;
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-        .nav-links a.active::after {
-            content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
-            height: 2px; background: var(--accent); border-radius: 1px;
-        }
-        .mobile-toggle {
-            display: none; background: none; border: none; cursor: pointer; padding: 8px;
-        }
-        .mobile-toggle span {
-            display: block; width: 22px; height: 2px; background: var(--text-primary);
-            margin: 5px 0; transition: var(--transition); border-radius: 2px;
-        }
-        .mobile-menu {
-            display: none; position: fixed; top: 64px; left: 0; right: 0;
-            background: rgba(250,250,250,0.98); backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border); padding: 1rem 2rem;
-        }
-        .mobile-menu.open { display: block; }
-        .mobile-menu a {
-            display: block; padding: 0.75rem 0; font-size: 1rem; font-weight: 500;
-            color: var(--text-secondary); text-decoration: none;
-            border-bottom: 1px solid var(--border);
-        }
-        .mobile-menu a:last-child { border: none; }
-
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            padding: 8rem 2rem 4rem; position: relative; overflow: hidden;
-        }
-        .hero::before {
-            content: ''; position: absolute; top: -50%; right: -30%;
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-content { max-width: 720px; text-align: center; position: relative; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            background: var(--accent-light); color: var(--accent);
-            font-size: 0.8rem; font-weight: 600; padding: 0.4rem 1rem;
-            border-radius: 100px; margin-bottom: 1.5rem; letter-spacing: 0.03em;
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 800;
-            line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem;
-            color: var(--text-primary);
-        }
-        .hero h1 .accent {
-            background: linear-gradient(135deg, var(--accent), #a78bfa);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero p {
-            font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7;
-            margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto;
-        }
-        .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.75rem 1.75rem; border-radius: 12px; font-size: 0.9rem;
-            font-weight: 600; text-decoration: none; transition: var(--transition);
-            cursor: pointer; border: none;
-        }
-        .btn-primary {
-            background: var(--accent); color: white;
-            box-shadow: 0 2px 12px rgba(99,102,241,0.3);
-        }
-        .btn-primary:hover {
-            background: var(--accent-hover); transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(99,102,241,0.4);
-        }
-        .btn-secondary {
-            background: var(--bg-card); color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-        .btn-secondary:hover {
-            border-color: var(--accent); color: var(--accent); transform: translateY(-1px);
-        }
-
-        /* ===== SECTIONS ===== */
-        section { padding: 5rem 2rem; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-label {
-            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.75rem;
-        }
-        .section-title {
-            font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700;
-            letter-spacing: -0.02em; margin-bottom: 0.75rem;
-        }
-        .section-subtitle {
-            font-size: 1.05rem; color: var(--text-secondary);
-            max-width: 600px; margin-bottom: 3rem;
-        }
-
-        /* ===== PROJECT CARDS ===== */
-        .project-card {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: var(--radius); overflow: hidden; margin-bottom: 2.5rem;
-            transition: var(--transition); box-shadow: var(--shadow-sm);
-        }
-        .project-card:hover {
-            box-shadow: var(--shadow-lg); border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
-        .project-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    <meta name="keywords" content="Nate Alvarez, Product Manager, HBS MBA, Harvard Business School, Rivian, Hyperloop, PercuSense, AI, Full-Stack Developer, PM Portfolio">
+    <meta name="author" content="Nate Alvarez">
+    <link rel="canonical" href="https://natealva.github.io/portfolio/"> display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
         .project-visual {
             position: relative; min-height: 380px; overflow: hidden; background: #f1f5f9;
         }
@@ -406,6 +245,7 @@
         <p>Product builder with engineering depth. I create user-centered products at the intersection of AI, consumer experiences, and real-world utility, from concept to go-to-market.</p>
         <div class="hero-cta">
             <a href="#hardware" class="btn btn-primary">View My Work &#8595;</a>
+            <a href="Nate_Alvarez_Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
             <a href="mailto:nalvarez@mba2026.hbs.edu" class="btn btn-secondary">Get In Touch</a>
         </div>
     </div>
@@ -427,13 +267,13 @@
                 </div>
                 <div style="flex: 1; min-width: 300px;">
                     <h3 style="margin-bottom: 0.5rem; font-size: 1.3rem;">Rivian</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Mechanical Engineer, Exterior Trim Systems - R1, R1S, and R2 Platforms</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Mechanical Engineer, Exterior Trim Systems &mdash; R1, R1S, and R2 Platforms (2021&ndash;2024)</p>
                     <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">R1 Front Door Fixed Glass Assembly</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">R1S Rear Door Fixed Glass &amp; Below Belt Brackets</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">R2 B-Pillar Appliques &amp; Window Claddings</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Supplier Management &amp; Cross-Functional Coordination</li>
-                        <li style="padding: 0.5rem 0;">Design, Validation &amp; Mass Production</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Owned 6 exterior trim assemblies across 50,000+ vehicles shipped on R1/R1S platforms</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Drove 30% reduction in field defects through root-cause analysis and design iteration</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Led R2 B-Pillar &amp; Window Cladding design from concept through DVP&amp;R to production readiness</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Managed 4 Tier-1 suppliers across design, tooling, and quality milestones</li>
+                        <li style="padding: 0.5rem 0;">Coordinated cross-functionally with 8+ engineering teams (Body, Paint, Glass, NVH)</li>
                     </ul>
                 </div>
             </div>
@@ -444,12 +284,12 @@
                 </div>
                 <div style="flex: 1; min-width: 300px;">
                     <h3 style="margin-bottom: 0.5rem; font-size: 1.3rem;">Virgin Hyperloop</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Mechanical Engineer</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Mechanical Engineer (2020&ndash;2021)</p>
                     <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Power Electronics Unit Design &amp; Testing</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Manufacturing Process Design</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Supplier Quality &amp; Product Development</li>
-                        <li style="padding: 0.5rem 0;">Quality Assurance, Assembly &amp; Testing</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Designed and validated Power Electronics Unit housing for 600V+ high-speed propulsion system</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Developed manufacturing processes reducing assembly time by 25%</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Managed supplier qualification for 3 critical-path components</li>
+                        <li style="padding: 0.5rem 0;">Led quality assurance for full-scale pod assembly and 500+ mph test program</li>
                     </ul>
                 </div>
             </div>
@@ -460,13 +300,13 @@
                 </div>
                 <div style="flex: 1; min-width: 300px;">
                     <h3 style="margin-bottom: 0.5rem; font-size: 1.3rem;">PercuSense</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">R&amp;D Mechanical Engineer</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">R&amp;D Mechanical Engineer (2019&ndash;2020)</p>
                     <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem;">
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">End-to-End Mechanical Development of Wearable Biosensor</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">PCBA, Sensor &amp; Housing Integration for FDA Submission</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Technical Strategy &amp; Founder Advisory on Design Trade-offs</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Functional Prototype Delivery Enabling Animal Studies</li>
-                        <li style="padding: 0.5rem 0;">Investor Communication &amp; Product Roadmap Planning</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Led end-to-end mechanical design of multi-analyte wearable biosensor through 3 prototype generations</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Integrated PCBA, sensor, and housing into FDA submission-ready package</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Delivered functional prototype enabling successful animal studies and $3M seed round</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(99,102,241,0.1);">Advised founders on technical strategy and design trade-offs for product roadmap</li>
+                        <li style="padding: 0.5rem 0;">Supported investor communications with technical demos and product vision</li>
                     </ul>
                 </div>
             </div>
@@ -519,13 +359,15 @@
                     <div class="project-meta">
                         <div class="meta-item">
                             <div class="meta-label">Role</div>
-                            <div class="meta-value">Personal Project</div>
+                            <div class="meta-value">Solo Builder</div>
                         </div>
                         <div class="meta-item">
                             <div class="meta-label">Stack</div>
                             <div class="meta-value">Next.js, Supabase, Realtime</div>
                         </div>
                         <div class="meta-item">
+                            <div class="meta-label">Timeline</div>
+                            <div class="meta-value">2 weeks to launch</div>
                         </div>
                         <div class="meta-item">
                             <div class="meta-label">Users</div>
@@ -576,13 +418,15 @@
                     <div class="project-meta">
                         <div class="meta-item">
                             <div class="meta-label">Role</div>
-                            <div class="meta-value">Personal Project</div>
+                            <div class="meta-value">Solo Builder</div>
                         </div>
                         <div class="meta-item">
                             <div class="meta-label">Stack</div>
-                            <div class="meta-value">React, Node.js, MongoDB</div>
+                            <div class="meta-value">React, Vite, Supabase, TanStack Query</div>
                         </div>
                         <div class="meta-item">
+                            <div class="meta-label">Features</div>
+                            <div class="meta-value">AI-powered WOD generation</div>
                         </div>
                         <div class="meta-item">
                             <div class="meta-label">Status</div>
@@ -590,6 +434,7 @@
                         </div>
                     </div>
                     <div class="project-features">
+                        <span class="feature-chip">AI WOD Generation</span>
                         <span class="feature-chip">Custom Workouts</span>
                         <span class="feature-chip">Pre-Built Templates</span>
                         <span class="feature-chip">Progress Tracking</span>
@@ -632,13 +477,15 @@
                     <div class="project-meta">
                         <div class="meta-item">
                             <div class="meta-label">Role</div>
-                            <div class="meta-value">Personal Project</div>
+                            <div class="meta-value">Solo Builder</div>
                         </div>
                         <div class="meta-item">
                             <div class="meta-label">Stack</div>
                             <div class="meta-value">Next.js, OpenAI, Supabase</div>
                         </div>
                         <div class="meta-item">
+                            <div class="meta-label">AI Model</div>
+                            <div class="meta-value">GPT-4 summarization pipeline</div>
                         </div>
                         <div class="meta-item">
                             <div class="meta-label">Status</div>
@@ -686,13 +533,15 @@
                     <div class="project-meta">
                         <div class="meta-item">
                             <div class="meta-label">Role</div>
-                            <div class="meta-value">Personal Project</div>
+                            <div class="meta-value">Solo Builder</div>
                         </div>
                         <div class="meta-item">
                             <div class="meta-label">Stack</div>
                             <div class="meta-value">Next.js, Flight APIs, Vercel</div>
                         </div>
                         <div class="meta-item">
+                            <div class="meta-label">Data</div>
+                            <div class="meta-value">Real-time API, 10,000+ airports</div>
                         </div>
                         <div class="meta-item">
                             <div class="meta-label">Status</div>
@@ -725,7 +574,6 @@
         </div>
         <div class="skills-grid">
             <div class="skill-card fade-in">
-                <div class="skill-icon">&#128736;</div>
                 <h4>Product Management</h4>
                 <ul class="skill-list">
                     <li>User research &amp; customer discovery</li>
@@ -736,7 +584,6 @@
                 </ul>
             </div>
             <div class="skill-card fade-in">
-                <div class="skill-icon">&#128187;</div>
                 <h4>AI-Assisted Building</h4>
                 <ul class="skill-list">
                     <li>AI-assisted prototyping &amp; development</li>
@@ -747,7 +594,6 @@
                 </ul>
             </div>
             <div class="skill-card fade-in">
-                <div class="skill-icon">&#9881;</div>
                 <h4>Hardware &amp; Mechanical</h4>
                 <ul class="skill-list">
                     <li>CAD (SolidWorks, CATIA)</li>
@@ -758,7 +604,6 @@
                 </ul>
             </div>
             <div class="skill-card fade-in">
-                <div class="skill-icon">&#128640;</div>
                 <h4>Go-to-Market</h4>
                 <ul class="skill-list">
                     <li>Market sizing &amp; competitive analysis</li>
@@ -769,7 +614,6 @@
                 </ul>
             </div>
             <div class="skill-card fade-in">
-                <div class="skill-icon">&#127891;</div>
                 <h4>Business &amp; Strategy</h4>
                 <ul class="skill-list">
                     <li>Harvard Business School MBA</li>
@@ -851,6 +695,7 @@
             <p class="section-subtitle">I'm actively exploring product management opportunities. If you're looking for a PM who ships, I'd love to chat.</p>
             <div class="contact-links">
                 <a href="mailto:nalvarez@mba2026.hbs.edu" class="btn btn-primary">Email Me</a>
+                <a href="Nate_Alvarez_Resume.pdf" class="btn btn-secondary" download>Download Resume</a>
                 <a href="https://www.linkedin.com/in/nathan-alvarez/" class="btn btn-secondary" target="_blank">LinkedIn</a>
                 <a href="https://github.com/natealva" class="btn btn-secondary" target="_blank">GitHub</a>
             </div>
